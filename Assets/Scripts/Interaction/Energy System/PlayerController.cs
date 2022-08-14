@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     GameObject energy;
+    public EnergyBar energyBar;
+    // GameObject alertness;
+    // public EnergyBar alertnessBar;
     GameObject prompt;
     public int initialSpeed;
     public int speed;
@@ -23,6 +27,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         energy = GameObject.FindGameObjectWithTag("EnergyLevel");
+        energyBar.SetMaxEnergy(100);
+        // alertness = GameObject.FindGameObjectWithTag("AlertnessLevel");
+        // alertnessBar.SetMaxEnergy(400);
         prompt = GameObject.FindGameObjectWithTag("Prompt");
         isDrank = false;
 
@@ -53,20 +60,23 @@ public class PlayerController : MonoBehaviour
             transform.position += transform.right * Time.deltaTime * speed;
         }
 
-        bool isWalking = animator.GetBool(isWalkingHash);
-        bool forwardPressed = Input.GetKey(KeyCode.W);
+        // bool isWalking = animator.GetBool(isWalkingHash);
+        // bool forwardPressed = Input.GetKey(KeyCode.W);
 
-        if (!isWalking && forwardPressed)
-        {
-            animator.SetBool("isWalkingHash", true);
+        // if (!isWalking && forwardPressed)
+        // {
+        //     animator.SetBool("isWalkingHash", true);
 
-        }
+        // }
 
-        if (isWalking && !forwardPressed)
-        {
-            animator.SetBool("isWalkingHash", false);
+        // if (isWalking && !forwardPressed)
+        // {
+        //     animator.SetBool("isWalkingHash", false);
 
-        }
+        // }
+
+        energyBar.SetEnergy(energy.GetComponent<Energy>().energyLevel);
+        // alertnessBar.SetEnergy(energy.GetComponent<Energy>().alertnessLevel);
     }
 
     void LateUpdate() 
@@ -78,14 +88,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Food")
-        {
-            prompt.GetComponent<Prompt>().promptText = "Press E to eat food";
-            prompt.GetComponent<Prompt>().isPromptUpdated = false;
-        }
         if (other.tag == "Vending")
         {
-            prompt.GetComponent<Prompt>().promptText = "Press E to buy and drink beverage!";
+            prompt.GetComponent<Prompt>().promptText = "Press E to snack!";
             prompt.GetComponent<Prompt>().isPromptUpdated = false;
         }
         if (other.tag == "Bed")
@@ -97,28 +102,29 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKey(KeyCode.E) && other.tag == "Food")
-        {
-            prompt.GetComponent<Prompt>().promptText = "Food eaten! Gain 10 Energy!";
-            prompt.GetComponent<Prompt>().isPromptUpdated = false;
-            energy.GetComponent<Energy>().energyLevel += 10;
-            energy.GetComponent<Energy>().isEnergyUpdated = false;
-            Destroy(other.gameObject);
-        }
         if (Input.GetKey(KeyCode.E) && other.tag == "Vending" && !isDrank)
         {
-            prompt.GetComponent<Prompt>().promptText = "Drank Beverage! Gain 5 Energy!";
+            prompt.GetComponent<Prompt>().promptText = "Snack eaten! \nGained 40 Energy!";
             prompt.GetComponent<Prompt>().isPromptUpdated = false;
-            energy.GetComponent<Energy>().energyLevel += 5;
+
+            if (energy.GetComponent<Energy>().energyLevel + 40 <= 100) 
+            {
+                energy.GetComponent<Energy>().energyLevel += 40;
+                energyBar.SetEnergy(energy.GetComponent<Energy>().energyLevel);
+            } else {
+                energy.GetComponent<Energy>().energyLevel = 100;
+                energyBar.SetEnergy(100);
+            }
+
             energy.GetComponent<Energy>().isEnergyUpdated = false;
             isDrank = true;
         }
         if (Input.GetKey(KeyCode.E) && other.tag == "Bed")
         {
-            prompt.GetComponent<Prompt>().promptText = "Resting. Hold down 'E' to regain more health!";
+            prompt.GetComponent<Prompt>().promptText = "Resting! \nHold down 'E' to regain Alertness!";
             prompt.GetComponent<Prompt>().isPromptUpdated = false;
-            energy.GetComponent<Energy>().energyLevel += 1;
-            energy.GetComponent<Energy>().isEnergyUpdated = false;
+            energy.GetComponent<Energy>().alertnessLevel += 1;
+            energy.GetComponent<Energy>().isAlertnessUpdated = false;
         }
     }
 

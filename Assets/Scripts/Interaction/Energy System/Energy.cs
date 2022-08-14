@@ -5,11 +5,14 @@ using TMPro;
 
 public class Energy : MonoBehaviour
 {
-    private TextMeshProUGUI textEnergy;
+    public TextMeshProUGUI textEnergy;
+    public TextMeshProUGUI textAlertness;
     public bool isEnergyUpdated;
+    public bool isAlertnessUpdated;
     public bool isSpeedNormal;
     public bool isPlayerFainted;
     public int energyLevel;
+    public int alertnessLevel;
     GameObject clock;
     GameObject player;
     GameObject prompt;
@@ -19,10 +22,15 @@ public class Energy : MonoBehaviour
     {
         textEnergy = GetComponent<TextMeshProUGUI>();
         textEnergy.text = energyLevel.ToString() + "/100";
+        textEnergy = GetComponent<TextMeshProUGUI>();
+        textEnergy.text = alertnessLevel.ToString() + "/400";
+
         clock = GameObject.FindGameObjectWithTag("Clock");
         player = GameObject.FindGameObjectWithTag("Player");
         prompt = GameObject.FindGameObjectWithTag("Prompt");
+
         isEnergyUpdated = true;
+        isAlertnessUpdated = true;
         isSpeedNormal = true;
         isPlayerFainted = false;
     }
@@ -69,5 +77,18 @@ public class Energy : MonoBehaviour
             isSpeedNormal = true;
             isPlayerFainted = false;
         }
+
+        if (alertnessLevel != 0)
+        {
+            alertnessLevel -= 1;
+        }
+
+        if (alertnessLevel < 30)
+        {
+            Screen.brightness -= (float) 0.05;
+        } else {
+            Screen.brightness = (float) 1;
+        }
+
     }
 }

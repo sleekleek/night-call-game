@@ -1,0 +1,134 @@
+newmtl blinn9SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Tablet_color_5.png
+bump Tablet_normal_1.png -bm 0.3
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn10SG
+illum 4
+Kd 0.38 0.71 0.17
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn11SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Tablet_color_1.png
+bump Tablet_normal_1.png -bm 0.3
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Tablet_color_6.png
+bump Tablet_normal_1.png -bm 0.3
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn13SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Tablet_color_4.png
+bump Tablet_normal_2.png -bm 0.3
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn14SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Tablet_color_2.png
+bump Tablet_normal_2.png -bm 0.5
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn15SG
+illum 4
+Kd 0.12 0.50 0.40
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn16SG
+illum 4
+Kd 0.60 0.09 0.00
+Ka 0.00 0.00 0.00
+Tf 0.55 0.55 0.55
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl blinn17SG
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+bump Tablet_normal_3.png -bm 0.3
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn18SG
+illum 4
+Kd 0.43 0.85 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+bump Tablet_normal_2.png -bm 0.3
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn19SG
+illum 4
+Kd 0.79 0.20 0.20
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl blinn20SG
+illum 4
+Kd 0.88 0.52 0.15
+Ka 0.00 0.00 0.00
+Tf 0.61 0.61 0.61
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl blinn21SG
+illum 4
+Kd 0.97 0.97 0.97
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+bump Tablet_normal_2.png -bm 0.2
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn22SG
+illum 4
+Kd 0.91 0.91 0.91
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.88 0.88 0.88
+newmtl blinn23SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.11 0.11 0.11
+Tf 1.00 1.00 1.00
+map_Kd Tablet_color_3.png
+bump Tablet_color_3.png -bm 0.0549451
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn24SG
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.20 0.20 0.20
+Tf 0.50 0.50 0.50
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl blinn25SG
+illum 4
+Kd 1.00 0.00 0.00
+Ka 0.17 0.17 0.17
+Tf 0.50 0.50 0.50
+Ni 1.00
+Ks 1.00 1.00 1.00

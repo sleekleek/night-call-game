@@ -9,6 +9,13 @@ TagManager:
   - PatientMonitor
   - IV Stand
   - Medication Vial
+  - Clock
+  - EnergyLevel
+  - Prompt
+  - Vending
+  - Food
+  - Bed
+  - AlertnessLevel
   layers:
   - Default
   - TransparentFX
