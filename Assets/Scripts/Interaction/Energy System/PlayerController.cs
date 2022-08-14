@@ -11,21 +11,69 @@ public class PlayerController : MonoBehaviour
     private bool isDrank;
     Vector3 Vec;
 
+    public float updateSpeed = 45;
+    public float mouseSensitivity = 0.5f;
+    public Vector2 turn;
+    public Vector3 deltaMove;
+
+    Animator animator;
+    int isWalkingHash;
+
     // Start is called before the first frame update
     void Start()
     {
         energy = GameObject.FindGameObjectWithTag("EnergyLevel");
         prompt = GameObject.FindGameObjectWithTag("Prompt");
         isDrank = false;
+
+        animator = GetComponent<Animator>();
+        isWalkingHash = Animator.StringToHash("isWalking");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vec = transform.localPosition;
-        Vec.x += Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        Vec.z += Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        transform.localPosition = Vec;
+        if (Input.GetKey(KeyCode.W)) 
+        {
+            transform.position += transform.forward * Time.deltaTime * speed;
+        }
+        
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position -= transform.forward * Time.deltaTime * speed;
+        }
+
+        if (Input.GetKey(KeyCode.A)) 
+        {
+            transform.position -= transform.right * Time.deltaTime * speed;
+        }
+        
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += transform.right * Time.deltaTime * speed;
+        }
+
+        bool isWalking = animator.GetBool(isWalkingHash);
+        bool forwardPressed = Input.GetKey(KeyCode.W);
+
+        if (!isWalking && forwardPressed)
+        {
+            animator.SetBool("isWalkingHash", true);
+
+        }
+
+        if (isWalking && !forwardPressed)
+        {
+            animator.SetBool("isWalkingHash", false);
+
+        }
+    }
+
+    void LateUpdate() 
+    {
+        // Rotation
+        turn.x += Input.GetAxis("Mouse X") * mouseSensitivity;
+        transform.localRotation = Quaternion.Euler(0, turn.x, 0);
     }
 
     private void OnTriggerEnter(Collider other)

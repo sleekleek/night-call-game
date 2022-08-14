@@ -42,8 +42,10 @@ public class Energy : MonoBehaviour
             }
             else if (energyLevel <= 10 && energyLevel >= 1 && isSpeedNormal)
             {
-                player.GetComponent<PlayerController>().speed = player.GetComponent<PlayerController>().initialSpeed / 10;
+                player.GetComponent<PlayerController>().speed = player.GetComponent<PlayerController>().initialSpeed / 5;
                 isSpeedNormal = false;
+                prompt.GetComponent<Prompt>().promptText = "Low energy! \n Get something to eat!";
+                prompt.GetComponent<Prompt>().isPromptUpdated = false;
             }
             else if (energyLevel == 0 && !isPlayerFainted)
             {
