@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
     int isWalkingHash;
+    KeyCode keyinput;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
+        keyinput = KeyCode.None;
     }
 
     // Update is called once per frame
@@ -43,40 +45,41 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W)) 
         {
             transform.position += transform.forward * Time.deltaTime * speed;
+            keyinput = KeyCode.W;
         }
         
         if (Input.GetKey(KeyCode.S))
         {
             transform.position -= transform.forward * Time.deltaTime * speed;
+            keyinput = KeyCode.S;
         }
 
         if (Input.GetKey(KeyCode.A)) 
         {
             transform.position -= transform.right * Time.deltaTime * speed;
+            keyinput = KeyCode.A;
         }
         
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += transform.right * Time.deltaTime * speed;
+            keyinput = KeyCode.D;
         }
 
-        // bool isWalking = animator.GetBool(isWalkingHash);
-        // bool forwardPressed = Input.GetKey(KeyCode.W);
+        bool isWalking = animator.GetBool(isWalkingHash);
+        bool Pressed = Input.GetKey(keyinput); 
 
-        // if (!isWalking && forwardPressed)
-        // {
-        //     animator.SetBool("isWalkingHash", true);
+        if (!isWalking && Pressed)
+        {
+            animator.SetBool(isWalkingHash, true);
 
-        // }
+        }
 
-        // if (isWalking && !forwardPressed)
-        // {
-        //     animator.SetBool("isWalkingHash", false);
+        if (isWalking && !Pressed)
+        {
+            animator.SetBool(isWalkingHash, false);
 
-        // }
-
-        energyBar.SetEnergy(energy.GetComponent<Energy>().energyLevel);
-        // alertnessBar.SetEnergy(energy.GetComponent<Energy>().alertnessLevel);
+        }
     }
 
     void LateUpdate() 
